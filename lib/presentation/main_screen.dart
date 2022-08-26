@@ -327,9 +327,10 @@ class CustomSliverGridWidget extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          SizedBox(
+                          CachedNetworkImage(
+                            imageUrl: bestSellInfo[index].picture,
                             height: 168.h,
-                            child: CachedNetworkImage(imageUrl: bestSellInfo[index].picture),
+                            fit: BoxFit.fill,
                           ),
 
                           Padding(
@@ -423,7 +424,7 @@ class CustomCarouselWidget extends StatelessWidget {
           .map(
             (e) => Container(
               margin: EdgeInsets.symmetric(horizontal: 10.w),
-              padding: EdgeInsets.only(right: 4.w),
+              padding: EdgeInsets.only(right: 5.w),
               width: double.infinity,
               height: 182.h,
               decoration: BoxDecoration(
@@ -599,16 +600,18 @@ class CustomSliverAppBar extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 13.h),
-                  height: 37.h,
-                  width: 37.w,
-                  decoration: BoxDecoration(
-                    color: ThemeColors.blue,
-                    borderRadius: BorderRadius.circular(10.r),
+                InkWell(
+                  onTap: () => Navigator.pop(context),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 13.h),
+                    height: 37.h,
+                    width: 37.w,
+                    decoration: BoxDecoration(
+                      color: ThemeColors.blue,
+                      borderRadius: BorderRadius.circular(10.r),
+                    ),
+                    child: SvgPicture.asset("assets/icons/close_white.svg"),
                   ),
-                  child: InkWell(
-                      onTap: () => Navigator.pop(context), child: SvgPicture.asset("assets/icons/close_white.svg")),
                 ),
                 Text(
                   "Filter options",
